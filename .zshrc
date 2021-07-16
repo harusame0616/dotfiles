@@ -211,6 +211,17 @@ if [[ ! -n $TMUX && $- == *l* ]]; then
   fi
 fi
 
+# -- GHQ -------------------
+function peco-ghq-look () {
+    local ghq_root=`ghq root`
+    local selected_dir=`ghq list | peco --prompt="cd-ghq >"`
+    echo "${ghq_root}/${selected_dir}"
+    cd "${ghq_root}/${selected_dir}"
+    zle clear-screen
+}
+
+zle -N peco-ghq-look
+bindkey '^g' peco-ghq-look
 
 # -- HOOK ------------------
 # コマンドの実行ごとに改行
