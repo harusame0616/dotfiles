@@ -20,4 +20,4 @@ ${PACKAGER} ${INSTALL} ${OPT} zsh tmux peco  git ghq lazydocker lazygit lsd
 
 ln .zshrc ~/.zshrc
 ln .tmux.conf ~/.tmux.conf
-ln .vimrc ~/.vimr
+ln .vimrc ~/.vimrc
