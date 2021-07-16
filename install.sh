@@ -18,6 +18,9 @@ fi
 ${PACKAGER} ${INSTALL} ${OPT} zsh tmux peco  git ghq lazydocker lazygit lsd
 
 
-ln .zshrc ~/.zshrc
-ln .tmux.conf ~/.tmux.conf
-ln .vimrc ~/.vimrc
+# 設定ファイルのリンク作成
+dir=`pwd`
+files=(.zshrc .tmux.conf .vimrc)
+for file in $files; do
+  ln -s $dir/$file ~/$file
+done
