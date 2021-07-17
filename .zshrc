@@ -258,7 +258,7 @@ bindkey '^e' cd_recents
 
 # --- git -------------------
 function select_branch(){
-  branch=`git branch | peco --prompt "branch${1} >" | sed -re "s/ +|^\*|\r\n//g"`
+  branch=`git branch ${1}| peco --prompt "branch${1} >" | sed -re "s/ +|^\*|\r\n//g"`
   if [ -z $branch ]; then
     return
   fi
