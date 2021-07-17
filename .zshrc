@@ -221,7 +221,7 @@ function peco-ghq-look () {
 }
 
 zle -N peco-ghq-look
-bindkey '^g' peco-ghq-look
+bindkey '^g^g' peco-ghq-look
 
 # -- HOOK ------------------
 # コマンドの実行ごとに改行
@@ -239,10 +239,25 @@ autoload -U add-zsh-hook
 add-zsh-hook -Uz chpwd (){ ls }
 
 
+# --- git -------------------
+function select_branch(){
+  branch=`git branch | peco --prompt "branch${1} >" | sed -re "s/ +|^\*|\r\n//g"`
+  if [ -z $branch ]; then
+    return
+  fi
+  BUFFER+=" $branch"
+  CURSOR+=${#branch}+1
+  zle redisplay
+}
+
+function select_branch_remote(){
+  select_branch --remote
+}
+
+zle -N select_branch
+zle -N select_branch_remote
+bindkey '^g^b' "select_branch"
+bindkey '^g^r' "select_branch_remote"
 
 # -- ALIAS ------------------
-## localbranch
-alias -g lb='`git branch | peco --prompt "GIT BRANCH>" | head -n 1 | sed -e "s/^\*\s*//g"`'
-## remotebranch
-alias -g rb='`git branch --remote | peco --prompt "GIT BRANCH>" | head -n 1 | sed -e "s/^\*\s*//g"`'
 alias ls=lsd
