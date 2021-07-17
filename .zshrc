@@ -271,10 +271,23 @@ function select_branch_remote(){
   select_branch --remote
 }
 
+function select_commit(){
+  commit=`git log --pretty=format:"%h: %s" | peco --prompt "commit${1} >" | sed -re "s/:.+//g"`
+  echo $commit
+  if [ -z $commit ]; then
+    return
+  fi
+  BUFFER+=" $commit"
+  CURSOR+=${#commit}+1
+  zle redisplay
+}
+
 zle -N select_branch
 zle -N select_branch_remote
-bindkey '^g^b' "select_branch"
-bindkey '^g^r' "select_branch_remote"
+zle -N select_commit
+bindkey '^g^b' select_branch
+bindkey '^g^r' select_branch_remote
+bindkey '^g^l' select_commit
 
 # -- ALIAS ------------------
 alias ls=lsd
