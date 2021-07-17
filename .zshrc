@@ -97,7 +97,6 @@ setopt pushd_ignore_dups
 setopt correct
 
 
-
 # peco history
 function select-history() {
     local tac
@@ -120,9 +119,7 @@ function status-prompt {
 
   set_text_color='%{\e[38;5;'    # set text color
   set_back_color='%{\e[30;48;5;' # set background color
-
-  # カラー見本がみたい場合は以下のコマンドをシェルで実行
-  # for c in {000..255}; do echo -n "\e[38;5;${c}m $c" ; [ $(($c%16)) -eq 15 ] && echo;done;echo
+# カラー見本がみたい場合は以下のコマンドをシェルで実行 # for c in {000..255}; do echo -n "\e[38;5;${c}m $c" ; [ $(($c%16)) -eq 15 ] && echo;done;echo
   text_color_1="230m%}"
   text_color_2="230m%}"
   text_color_3="230m%}"
@@ -237,6 +234,26 @@ function precmd() {
 # ディレクトリ移動後
 autoload -U add-zsh-hook
 add-zsh-hook -Uz chpwd (){ lsd }
+
+# --- CDR -------------------
+# cdr, add-zsh-hook を有効にする
+autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+add-zsh-hook chpwd chpwd_recent_dirs
+
+# cdr の設定
+zstyle ':completion:*' recent-dirs-insert both
+zstyle ':chpwd:*' recent-dirs-max 500
+zstyle ':chpwd:*' recent-dirs-default true
+zstyle ':chpwd:*' recent-dirs-file "$HOME/.cdr-history"
+zstyle ':chpwd:*' recent-dirs-pushd true
+function cd_recents(){
+  dir=`cdr -l | peco --prompt "recent dirs > " | sed -re "s/([0-9]+ +)|\n//g"`
+  BUFFER="${dir}"
+  zle accept-line
+}
+
+zle -N cd_recents
+bindkey '^e' cd_recents
 
 
 # --- git -------------------
