@@ -236,7 +236,7 @@ function precmd() {
 
 # ディレクトリ移動後
 autoload -U add-zsh-hook
-add-zsh-hook -Uz chpwd (){ ls }
+add-zsh-hook -Uz chpwd (){ lsd }
 
 
 # --- git -------------------
