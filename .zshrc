@@ -1,3 +1,6 @@
+# application setting
+## github cli
+eval "$(gh completion -s zsh)"
 export PATH="/usr/local/opt/curl/bin:$PATH" >> ~/.zshrc
 
 PROMPT='%~'
