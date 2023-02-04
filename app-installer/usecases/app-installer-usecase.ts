@@ -1,7 +1,7 @@
 import { Executer } from '../domains/app-installer/executer';
 import { AppInstallerRepository } from '../infra/repositories/app-installer-repository';
 
-export class AppInstallerUsease {
+export class AppInstallerUsecase {
   constructor(private appInstallerRepository: AppInstallerRepository) {}
 
   async installPresetApps() {
