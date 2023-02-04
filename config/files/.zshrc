@@ -6,6 +6,8 @@ eval "$(gh completion -s zsh)"
 eval "$(fnm env --use-on-cd)"
 eval "$(fnm completions --shell zsh)"
 
+export SHELL=/opt/homebrew/bin/zsh
+
 export PATH="/usr/local/opt/curl/bin:$PATH" >> ~/.zshrc
 
 PROMPT='%~'
