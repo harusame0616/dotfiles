@@ -1,6 +1,11 @@
 # application setting
 ## github cli
 eval "$(gh completion -s zsh)"
+
+## fnm
+eval "$(fnm env --use-on-cd)"
+eval "$(fnm completions --shell zsh)"
+
 export PATH="/usr/local/opt/curl/bin:$PATH" >> ~/.zshrc
 
 PROMPT='%~'
