@@ -1,0 +1,22 @@
+gui:
+  authorColors:
+    "Nemoto Masaharu": magenta
+  branchColors:
+    main: green
+    develop: yellow
+    nemoto: magenta
+    feature: cyan
+    renovate: "#aaaa33"
+  nerdFontsVersion: "3"
+
+os:
+  edit: "code-insiders --reuse-window -- {{filename}}"
+  editAtLine: "code-insiders --reuse-window --goto -- {{filename}}:{{line}}"
+  editAtLineAndWait: "code-insiders --reuse-window --goto --wait -- {{filename}}:{{line}}"
+  openDirInEditor: "code-insiders -- {{dir}}"
+  editInTerminal: false
+
+git:
+  paging:
+    colorArg: always
+    pager: delta --dark --paging=never  --line-numbers --keep-plus-minus-markers --side-by-side
