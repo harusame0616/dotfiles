@@ -20,6 +20,8 @@ brew install tmux
 # other
 brew install peco
 brew install mas
+# tac のため
+brew install coreutils
 
 # line
 mas install 539883307

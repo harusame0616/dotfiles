@@ -1,3 +1,6 @@
+# tac 用
+export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
+
 ## zsh 設定
 ### vim like キーバインド
 bindkey -v
@@ -28,10 +31,19 @@ setopt hist_no_functions
 #### 履歴参照のコマンドは履歴に登録しない
 setopt hist_no_store
 
+function peco-history-selection() {
+    BUFFER=`history -n 1 | tac  | awk '!a[$0]++' | peco`
+    CURSOR=$#BUFFER
+    zle reset-prompt
+}
+
+zle -N peco-history-selection
+bindkey '^R' peco-history-selection
+
 ### タブ
 setopt auto_menu
 
-### 保管
+### 補完 
 #### --prefix=/usr などの = 以降も補完
 setopt magic_equal_subst
 ## 補完候補一覧でファイルの種別をマーク表示
