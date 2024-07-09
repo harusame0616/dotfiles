@@ -71,7 +71,8 @@ bindkey '^E' peco-cdr
 
 
 ## zplug
-source ~/.zplug/init.zsh
+export ZPLUG_HOME=/opt/homebrew/opt/zplug
+source $ZPLUG_HOME/init.zsh
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 # 非同期処理できるようになる
 zplug "mafredri/zsh-async"
