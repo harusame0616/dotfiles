@@ -8,6 +8,7 @@ gui:
     feature: cyan
     renovate: "#aaaa33"
   nerdFontsVersion: "3"
+  sidePanelWidth: 0.25
 
 os:
   edit: "code-insiders --reuse-window -- {{filename}}"
