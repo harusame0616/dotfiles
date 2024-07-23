@@ -9,6 +9,7 @@ gui:
     renovate: "#aaaa33"
   nerdFontsVersion: "3"
   sidePanelWidth: 0.25
+  commitHashLength: 0
 
 os:
   edit: "code-insiders --reuse-window -- {{filename}}"
