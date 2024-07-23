@@ -10,6 +10,7 @@ gui:
   nerdFontsVersion: "3"
   sidePanelWidth: 0.25
   commitHashLength: 0
+  showBottomLine: false
 
 os:
   edit: "code-insiders --reuse-window -- {{filename}}"
